@@ -1,0 +1,255 @@
+/* General
+----------------------------------------------------------------------------------*/
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    color: #343434;
+    font-family: 'Lora', serif;
+    padding: 0;
+    margin: 0;
+}
+img {
+    width: 100%;
+}
+a {
+    color: #ffa500;
+}
+li {
+    list-style: none;
+}
+h1, h2, h3 {
+    margin: 0;
+}
+h2 {
+    line-height: 1;
+    color: #e9eacb;
+}
+h4 {
+    font-size: small;
+    margin: 0;
+    padding: 0;
+    /*display: ;*/
+}
+h1 {
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 70px;
+    line-height: 1;
+    color: #1f1f1f;
+}
+.container-wrap {
+    max-width: 1200px;
+    width: 85%;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.menu {
+    padding: 0;
+}
+
+.menu li {
+    display: inline-block;
+    background: #76a562;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.menu li a {
+    color: #3f3f3f;
+    text-decoration: none;
+}
+
+.menu li:hover {
+    background: #8dc775;
+}
+
+.menu li:hover a {
+    color: #222222;
+}
+
+#background {
+    background-image: url("../img/news-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Header
+----------------------------------------------------------------------------------*/
+.mainHeader {
+    background: #557746;
+}
+
+.header-wrap {
+    padding: 20px;
+}
+
+
+
+
+
+/* Main
+----------------------------------------------------------------------------------*/
+.mainBlock {
+    /*background: #cfe3bc;*/
+}
+
+.mein-news-list {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding: 0;
+}
+
+.big-grid-el-1 {
+    grid-column: 1 / 3;
+}
+
+.big-grid-el-2 {
+    grid-column: 2 / 4;
+}
+
+.mein-news-el {
+    color: #4b4b4c;
+    text-decoration: none;
+    background: #ffd400;
+    padding: 10px;
+    display: block;
+    width: auto;
+    height: 54px;
+    overflow: auto;
+}
+
+.mein-news-el:hover {
+    background: #f4c800;
+}
+
+.time {
+    font-family: sans-serif;
+    font-size: small;
+    font-weight: lighter;
+    color: #7c7c7c;
+}
+
+
+
+
+
+
+/* Top 3 section
+----------------------------------------------------------------------------------*/
+
+.topNewsBlock {
+    /*background: #eff8ac;*/
+}
+
+.article-wrap {
+    background: #76a562;
+    padding: 30px;
+    margin: 20px 0;
+    /*text-align: justify;*/
+    overflow: hidden;
+}
+
+.article-wrap p, .article-wrap figure {
+    margin: 10px 0;
+}
+
+
+/* Footer
+----------------------------------------------------------------------------------*/
+.mainFooter {
+    background: #585352;
+}
+
+.footerMenu li{
+    background: #6e6a67;
+}
+
+.footerMenu li a{
+    color: #b2b2b2;
+}
+
+.footerMenu li:hover{
+    background: #797371;
+}
+
+.footerMenu li:hover a{
+    color: #d8d8d8;
+}
+
+.footer-wrap {
+    padding: 10px;
+}
+
+.footer-wrap p {
+    color: #c6c1ba;
+}
+
+/* Responsive
+----------------------------------------------------------------------------------*/
+
+@media screen and (min-width: 1377px){
+
+    h1 {
+        font-size: 80px;
+    }
+
+    .article-wrap figure {
+        margin: 15px 0 0 0;
+        float: right;
+    }
+
+    img {
+        width: 300px;
+    }
+
+    .article-wrap p {
+        margin-left: 0;
+        float: left;
+        width: 800px;
+    }
+
+}
+
+@media screen and (max-width: 1012px){
+    h1 {
+        font-size: 60px;
+    }
+    .mein-news-list {
+        display: block;
+    }
+    .mein-news-el {
+        display: inline-block;
+        margin: 5px 0;
+    }
+}
+
+@media screen and (max-width: 744px){
+    footer {
+        text-align: center;
+    }
+    footer .menu li {
+        display: block;
+        text-align: center;
+        margin: 3px auto;
+        width: 68%;
+    }
+}
+
+@media screen and (max-width: 569px){
+    .mainHeader {
+        text-align: center;
+    }
+    .menu li {
+        display: block;
+        text-align: center;
+        margin: 3px auto;
+        width: 68%;
+    }
+}
