@@ -23,4 +23,11 @@ public class NewServiceImpl implements NewService {
     public New getNewById(Long id) {
         return newRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        newRepository.deleteById(id);
+    }
+
+
 }

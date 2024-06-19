@@ -1,8 +1,7 @@
-/* Importing Google Fonts */
+
 @import url('https://fonts.googleapis.com/css?family=Lora:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap');
 
-/* General Styles */
 body {
     font-family: 'Lora', serif;
     margin: 0;
@@ -13,16 +12,15 @@ body {
 
 a {
     text-decoration: none;
-    color: #0073e6; /* Primary blue color for links */
+    color: #0073e6;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-/* Header */
 .mainHeader {
-    background-color: #004080; /* Dark blue background */
+    background-color: #004080;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -62,9 +60,10 @@ a:hover {
 
 .loginButton:hover {
     background-color: #005bb5;
+    text-decoration: none;
 }
 
-/* Main Content */
+
 .mainContent {
     background-color: #ffffff;
     padding: 20px 0;
@@ -86,7 +85,6 @@ a:hover {
     color: #999999;
 }
 
-/* Top News Section */
 .topNews {
     background-color: #e6f2ff;
     padding: 20px 0;
@@ -116,7 +114,6 @@ a:hover {
     margin: 0 15px;
 }
 
-/* Articles */
 .article {
     background-color: #ffffff;
     margin-bottom: 20px;

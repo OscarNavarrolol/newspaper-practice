@@ -9,4 +9,6 @@ public interface NewService {
     public List<New> getAllNew();
 
     public New getNewById(Long id);
+
+    public void deleteById(Long id);
 }

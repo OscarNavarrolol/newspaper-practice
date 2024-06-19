@@ -15,9 +15,24 @@ public class NewRestController {
     @Autowired
     private NewService newService;
 
-    @GetMapping("/get_user")
+    @GetMapping("/get_new")
     public List<New> getAllUser(){
         return newService.getAllNew();
+    }
+
+    @GetMapping("/get_new/{id}")
+    public New getUserById(@PathVariable("id") Long id){
+        return newService.getNewById(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteById(@PathVariable("id") Long id){
+        newService.deleteById(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public void takeAttendance(@PathVariable("id") Long id) {
+        newService.saveEventArrivalTime(id);
     }
 
 }
