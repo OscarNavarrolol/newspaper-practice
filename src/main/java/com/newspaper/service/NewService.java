@@ -12,4 +12,7 @@ public interface NewService {
     public NewDto getNewById(Long id);
 
     public void deleteById(Long id);
+
+
+    public NewDto getNewMostRecent();
 }

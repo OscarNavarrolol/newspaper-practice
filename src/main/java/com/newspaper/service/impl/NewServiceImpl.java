@@ -35,5 +35,11 @@ public class NewServiceImpl implements NewService {
         newRepository.deleteById(id);
     }
 
+    @Override
+    public NewDto getNewMostRecent() {
+        return newRepository.findRecentNew().
+
+    }
+
 
 }
