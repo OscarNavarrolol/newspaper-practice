@@ -1,5 +1,6 @@
 package com.newspaper.api;
 
+import com.newspaper.dto.NewDto;
 import com.newspaper.entity.New;
 import com.newspaper.service.NewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,12 @@ public class NewRestController {
     private NewService newService;
 
     @GetMapping("/get_new")
-    public List<New> getAllUser(){
+    public List<NewDto> getAllUser(){
         return newService.getAllNew();
     }
 
     @GetMapping("/get_new/{id}")
-    public New getUserById(@PathVariable("id") Long id){
+    public NewDto getUserById(@PathVariable("id") Long id){
         return newService.getNewById(id);
     }
 
@@ -30,9 +31,9 @@ public class NewRestController {
         newService.deleteById(id);
     }
 
-    @PutMapping("/update/{id}")
-    public void takeAttendance(@PathVariable("id") Long id) {
-        newService.saveEventArrivalTime(id);
-    }
+//    @PutMapping("/update/{id}")
+//    public void takeAttendance(@PathVariable("id") Long id) {
+//        newService.saveEventArrivalTime(id);
+//    }
 
 }

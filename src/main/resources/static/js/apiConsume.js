@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://localhost:8083/api_new/get_user')
+    fetch('http://localhost:8083/api_new/get_new')
         .then(response => response.json())
         .then(data => {
             const articlesSection = document.getElementById('articles');
+            articlesSection.innerHTML = '';
 
             data.forEach(article => {
                 const articleElement = document.createElement('article');
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const titleElement = document.createElement('h3');
                 titleElement.classList.add('articleTitle');
-                titleElement.textContent = article.title;
+                titleElement.innerHTML = article.title;
 
                 const contentElement = document.createElement('p');
                 contentElement.classList.add('articleBody');
@@ -23,6 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 articleElement.appendChild(titleElement);
                 articleElement.appendChild(contentElement);
                 articleElement.appendChild(dateElement);
+
+                if (article.imageUrl) {
+                    const figureElement = document.createElement('figure');
+                    figureElement.classList.add('articleImage');
+
+                    const imgElement = document.createElement('img');
+                    imgElement.src = article.imageUrl;
+                    imgElement.alt = article.title;
+
+                    figureElement.appendChild(imgElement);
+                    articleElement.appendChild(figureElement);
+                }
 
                 articlesSection.appendChild(articleElement);
             });

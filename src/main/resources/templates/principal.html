@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/principalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <script src="/js/apiConsume.js"></script>
+    <script src="/js/principalNew.js"></script>
 </head>
 <body class="newsArticle">
 <header class="mainHeader">
@@ -28,8 +30,10 @@
     <main class="mainContent">
         <div class="container">
             <header class="contentHeader">
-                <h2>Daily News</h2>
-                <p class="date"><time datetime="2020-01-09">January 9th, 2020</time></p>
+                <h2 id="news-title">Daily News</h2>
+                <p class="date"><time id="news-date" datetime=""></time></p>
+                <p id="news-content"></p>
+
             </header>
         </div>
     </main>
@@ -45,42 +49,9 @@
                     </ol>
                 </nav>
             </header>
-            <article id="1" class="article">
-                <h3 class="articleTitle">Ukrainian <span class="keywords">biathletes</span> take bronze in relay at <span class="keywords">World Championship</span></h3>
-                <p class="articleBody">
-                    Ukrainian women's biathlon team consisting of <span class="keywords">Anastasia Merkushyna</span>, <span class="keywords">Yulia Dzhyma</span>, <span class="keywords">Vita Semerenko</span> and <span class="keywords">Olena Pidhrushna</span> has won the bronze medal in the relay race (4x6 km) at the World Championship in Italian Antholz-Anterselva on Saturday.
-                    Ukrainians' good shooting and the rivals' mistakes allowed Pidhrushna in the fourth stage to leave the shooting range to the last lap of the second, noticeably behind the Norwegians following the third relay gold in this Championship and slightly ahead of rivals from several other teams.
-                    A representative of the German national team beat Pidhrushna before the finish. At the same time, the Ukrainian woman did not let the next athletes from the Czech Republic and Sweden go.
-                    This is the first medal of Ukrainian athletes in this championship.
-                    The Norwegian team won gold, and Germany took the second place.
-                    The relay race among men will also take place on Saturday, and the World Championship is to end on Sunday with mass starts.
-                </p>
-                <figure class="articleImage">
-                    <img src="img/biathletes.jpg" alt="Ukrainian biathletes">
-                </figure>
-            </article>
-            <article id="2" class="article">
-                <h3 class="articleTitle"><span class="keywords">NBU</span> raises offer for exchange of non-cash euros for cash on Friday to EUR 200 mln</h3>
-                <p class="articleBody">
-                    <span class="keywords">The National Bank of Ukraine</span> (NBU) on Friday increased its offer to exchange non-cash euros for cash to EUR 200 million, Deputy Governor of the NBU Oleg Churiy has said.
-                    "We saw a trend at the beginning of this week when banks did not have enough cash. This is due to problems with air traffic. We were involved in the solution of this problem and have already provided the banks with a sufficient number of banknotes in euros. Yesterday we held the first auction ... We sold EUR 100 million, the demand was EUR 36 million. Today we are holding another auction, already for EUR 200 million in cash euros for non-cash euros," Churiy said during an online briefing on Friday.
-                    The central bank will report on the results of the auction at the end of the working day.
-                </p>
-                <figure class="articleImage">
-                    <img src="img/euro.jpg" alt="Euros">
-                </figure>
-            </article>
-            <article id="3" class="article">
-                <h3 class="articleTitle"><span class="keywords">Zelensky</span> creates interim working group on health system reform to analyze medical reform progress by <time datetime="2020-03-01">March 1</time></h3>
-                <p class="articleBody">
-                    President of Ukraine Volodymyr Zelensky has created an interim working group on reforming the healthcare system and approved its composition, the press service of the <span class="keywords">President's Office of Ukraine</span> reports.
-                    "The working group should analyze the progress of reforming the Ukrainian healthcare system by March 1, 2020. In particular, the implementation of state guarantees of medical care for the population under the medical guarantees program for primary care and the readiness of healthcare institutions to implement the same guarantees for other types of medical care. Based on the results of this analysis, the working group should make proposals for the further reform of domestic medicine: on financing, improving the training system and continuous professional development of doctors and other medical workers, raising their salaries, scientific support of the health care system," decree No. 55/2020 published on the official website of the President's Office of Ukraine on Friday evening reads.
-                    Chairman of the Verkhovna Rada committee on national health, medical care and medical insurance Mykhailo Radutsky has taken over the leadership of the working group.
-                </p>
-                <figure class="articleImage">
-                    <img src="img/zelensky.jpg" alt="President Zelensky">
-                </figure>
-            </article>
+            <div id="articles" class="articles">
+
+            </div>
         </div>
     </section>
 </div>
