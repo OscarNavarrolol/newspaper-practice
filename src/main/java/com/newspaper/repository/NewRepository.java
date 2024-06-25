@@ -9,7 +9,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NewRepository extends JpaRepository<New,Long> {
 
-    @Query(nativeQuery = true, value = "select * from news where max(publication_date)")
-    User findRecentNew();
+    @Query(nativeQuery = true, value = "SELECT * " +
+            "FROM news " +
+            "WHERE (publication_date, id) IN " +
+            "    (SELECT publication_date, MAX(id) AS latest_id " +
+            "    FROM news " +
+            "    GROUP BY publication_date )" +
+            "   ORDER BY publication_date desc limit 1 ;")
+    New findRecentNew();
 
 }

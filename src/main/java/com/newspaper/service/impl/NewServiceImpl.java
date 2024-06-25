@@ -37,8 +37,13 @@ public class NewServiceImpl implements NewService {
 
     @Override
     public NewDto getNewMostRecent() {
-        return newRepository.findRecentNew().
+        New news = newRepository.findRecentNew();
 
+        if (news != null){
+            return new NewDto(news.getTitle(), news.getContent(), news.getPublicationDate());
+        } else {
+            return null;
+        }
     }
 
 

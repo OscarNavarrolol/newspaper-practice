@@ -36,4 +36,8 @@ public class NewRestController {
 //        newService.saveEventArrivalTime(id);
 //    }
 
+    @GetMapping("/recent")
+    public NewDto mostRecentNew(){
+        return newService.getNewMostRecent();
+    }
 }
