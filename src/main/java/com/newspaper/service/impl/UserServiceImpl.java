@@ -1,6 +1,7 @@
 package com.newspaper.service.impl;
 
 import com.newspaper.dto.CategoryDto;
+import com.newspaper.dto.NewDto;
 import com.newspaper.dto.UserDto;
 import com.newspaper.entity.Category;
 import com.newspaper.entity.User;
@@ -19,4 +20,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Override
+    public UserDto loginCheck(String userName, String password) {
+        return userRepository.findByUsernameAndPassword(String userName, String password).map(newObj -> new NewDto(newObj.getTitle(), newObj.getContent(), newObj.getPublicationDate()))
+                .orElse(null);;
+    }
 }
