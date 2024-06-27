@@ -24,4 +24,9 @@ public class UserController {
         return "register";
     }
 
+    @GetMapping("/principal")
+    public String homePage(){
+        return "principalPage";
+    }
+
 }
