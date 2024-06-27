@@ -15,7 +15,7 @@ public class User {
 
     @NotBlank(message = "not null userName")
     @Size(min = 3, max = 50)
-    @Column(name = "user_name")
+    @Column(name = "username")
     private String userName;
 
     @NotBlank(message = "not null password")
