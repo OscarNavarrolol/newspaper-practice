@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const articlesSection = document.getElementById('articles');
             articlesSection.innerHTML = '';
 
-            data.forEach(article => {
+            const articlesToShow = data.slice(0, 3);
+
+            articlesToShow.forEach(article => {
                 const articleElement = document.createElement('article');
                 articleElement.classList.add('article');
 

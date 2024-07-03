@@ -1,6 +1,7 @@
 package com.newspaper.api;
 
 import com.newspaper.dto.UserDto;
+import com.newspaper.entity.User;
 import com.newspaper.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,12 +11,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api_user")
 public class UserRestController {
 
-     @Autowired
+    @Autowired
     private UserService userService;
 
     @GetMapping("/check")
     public UserDto checkDataLogin(@RequestParam String userName, @RequestParam String password){
         return userService.loginCheck(userName,password);
+    }
+
+    @PostMapping("/register")
+    public User registerUser(@RequestBody User user){
+        return userService.registerUser(user);
     }
 
 }

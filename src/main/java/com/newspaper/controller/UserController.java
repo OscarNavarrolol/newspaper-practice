@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
     @GetMapping("/v1")
-    public String principalPage(Model model) {
+    public String principalPage() {
         return "principal";
     }
 
     @GetMapping("/login")
-    public String loginPage (Model model) {
+    public String loginPage () {
         return "login";
     }
 
     @GetMapping("/register")
-    public String registerPage (Model model) {
+    public String registerPage () {
         return "register";
     }
 

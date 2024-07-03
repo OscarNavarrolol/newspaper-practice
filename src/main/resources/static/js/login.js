@@ -2,9 +2,6 @@
 
 $(function() {
 
-    // author badge :)
-    var author = '<div style="position: fixed;bottom: 0;right: 20px;background-color: #fff;box-shadow: 0 4px 8px rgba(0,0,0,.05);border-radius: 3px 3px 0 0;font-size: 12px;padding: 5px 10px;">By <a href="https://twitter.com/mhdnauvalazhar">@mhdnauvalazhar</a> &nbsp;&bull;&nbsp; <a href="https://www.buymeacoffee.com/mhdnauvalazhar">Buy me a Coffee</a></div>';
-    $("body").append(author);
 
     $("input[type='password'][data-eye]").each(function(i) {
         var $this = $(this),
@@ -60,6 +57,10 @@ $(function() {
         });
     });
 
+
+
+
+
     $(".my-login-validation").submit(function() {
         var form = $(this);
         if (form[0].checkValidity() === false) {
@@ -67,5 +68,37 @@ $(function() {
             event.stopPropagation();
         }
         form.addClass('was-validated');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+
+        fetch(`http://localhost:8083/api_user/check?userName=${email}&password=${password}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Invalid login credentials');
+                }
+            })
+            .then(data => {
+                if (data) {
+                    window.location.href = '/user/principal';
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                errorMessage.style.display = 'block';
+                console.error('Error:', error);
+            });
     });
 });
