@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Newspaper</title>
+    <link rel="stylesheet" href="/principalStyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <script src="/js/apiConsume.js"></script>
+    <script src="/js/principalNew.js"></script>
+</head>
+<body class="newsArticle">
+<header class="mainHeader">
+    <div class="container headerWrap">
+        <h1>OSCARCITO News</h1>
+        <nav class="mainNav">
+            <ul class="menu mainMenu">
+                <li><a href="facts.html" class="menuItem">Facts</a></li>
+                <li><a href="tech.html" class="menuItem">Technology</a></li>
+                <li><a href="economy.html" class="menuItem">Economy</a></li>
+                <li><a href="health.html" class="menuItem">Sport</a></li>
+                <li><a href="blogs.html" class="menuItem">Blogs</a></li>
+            </ul>
+            <a href="/user/login" class="loginButton">Principal Login</a>
+        </nav>
+    </div>
+</header>
+<div id="background">
+    <main class="mainContent">
+        <div class="container">
+            <header class="contentHeader">
+                <h2 id="news-title">Daily News</h2>
+                <p class="date"><time id="news-date" datetime=""></time></p>
+                <p id="news-content"></p>
+
+            </header>
+        </div>
+    </main>
+    <section class="topNews">
+        <div class="container">
+            <header class="sectionHeader">
+                <h2>Top 3 news of the week</h2>
+                <nav class="topNav">
+                    <ol class="menu topMenu">
+                        <li><a href="#1" class="menuItem">Sport</a></li>
+                        <li><a href="#2" class="menuItem">Economy</a></li>
+                        <li><a href="#3" class="menuItem">Facts</a></li>
+                    </ol>
+                </nav>
+            </header>
+            <div id="articles" class="articles">
+
+            </div>
+        </div>
+    </section>
+</div>
+<footer class="mainFooter">
+    <div class="container footerWrap">
+        <p><small>Copyright © <time datetime="2020">2020</time> Insano oscar. All rights reserved.</small></p>
+        <ul class="menu footerMenu">
+            <li><a href="https://twitter.com" class="menuItem">Twitter</a></li>
+            <li><a href="https://www.github.com" class="menuItem">GitHub</a></li>
+            <li><a href="https://www.googleplus.com" class="menuItem">Google plus</a></li>
+            <li><a href="https://www.instagram.com" class="menuItem">Instagram</a></li>
+            <li><a href="https://www.facebook.com" class="menuItem">Facebook</a></li>
+            <li><a href="https://www.linkedin.com" class="menuItem">LinkedIn</a></li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>
