@@ -23,10 +23,9 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
-  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name_category` varchar(255) NOT NULL,
-  `description_category` text DEFAULT NULL,
-  PRIMARY KEY (`category_id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `name_category` (`name_category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +36,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Politics','News and updates on political events and issues.'),(2,'Sports','Coverage of sports events and news.'),(3,'Technology','Latest updates and advancements in technology.'),(4,'Entertainment','News about movies, music, and celebrities.'),(5,'Health','Information and news about health and wellness.');
+INSERT INTO `category` VALUES (4,'Entertainment'),(5,'Health'),(1,'Politics'),(2,'Sports'),(3,'Technology');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,17 +48,17 @@ DROP TABLE IF EXISTS `news`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `news` (
-  `news_id` int(11) NOT NULL AUTO_INCREMENT,
-  `headline` varchar(255) NOT NULL,
-  `body` text NOT NULL,
-  `publication_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `author_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`news_id`),
-  KEY `author_id` (`author_id`),
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `publication_date` date NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `category_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
   KEY `category_id` (`category_id`),
-  CONSTRAINT `news_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `news_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)
+  CONSTRAINT `news_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `news_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -69,7 +68,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (1,'Election Results 2024','The results of the 2024 presidential election have been announced.','2024-09-15 14:30:00',1,1),(2,'Local Team Wins Championship','The local soccer team won the regional championship in an exciting final match.','2024-09-14 10:00:00',2,2),(3,'New Smartphone Release','The latest smartphone model has been released with cutting-edge features.','2024-09-13 09:00:00',3,3),(4,'Upcoming Movie Releases','A preview of the most anticipated movie releases for the next quarter.','2024-09-12 18:00:00',4,4),(5,'Tips for a Healthy Lifestyle','Expert tips on maintaining a healthy lifestyle and diet.','2024-09-11 11:00:00',5,5);
+INSERT INTO `news` VALUES (1,'Election Results 2024','The results of the 2024 presidential election have been announced.','2024-09-15',1,1),(2,'Local Team Wins Championship','The local soccer team won the regional championship in an exciting final match.','2024-09-14',2,2),(3,'New Smartphone Release','The latest smartphone model has been released with cutting-edge features.','2024-09-13',3,3),(4,'Upcoming Movie Releases','A preview of the most anticipated movie releases for the next quarter.','2024-09-12',4,4),(5,'Tips for a Healthy Lifestyle','Expert tips on maintaining a healthy lifestyle and diet.','2024-09-11',5,5);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,13 +80,11 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
-  `password_user` varchar(255) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `full_name` varchar(255) DEFAULT NULL,
-  `registration_date` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`user_id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -99,7 +96,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'john_doe','password123','john.doe@example.com','John Doe','2024-09-16 08:59:46'),(2,'jane_smith','password456','jane.smith@example.com','Jane Smith','2024-09-16 08:59:46'),(3,'alice_johnson','password789','alice.johnson@example.com','Alice Johnson','2024-09-16 08:59:46'),(4,'bob_brown','password101','bob.brown@example.com','Bob Brown','2024-09-16 08:59:46'),(5,'carol_white','password202','carol.white@example.com','Carol White','2024-09-16 08:59:46');
+INSERT INTO `user` VALUES (1,'john_doe','password123','john.doe@example.com'),(2,'jane_smith','password456','jane.smith@example.com'),(3,'alice_johnson','password789','alice.johnson@example.com'),(4,'bob_brown','password101','bob.brown@example.com'),(5,'carol_white','password202','carol.white@example.com');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -112,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-16  9:01:33
+-- Dump completed on 2024-09-16  9:17:17
