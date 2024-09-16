@@ -41,14 +41,15 @@ public class UserRestController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<User> updateUser(@RequestParam(name = "id") Long id, @RequestBody User user){
+    public ResponseEntity<User> updateUser(@PathVariable(name = "id") Long id, @RequestBody User user){
         User updatedUser = userService.updateUser(id, user);
         if (updatedUser != null){
-            return  new ResponseEntity<>(updatedUser, HttpStatus.OK);
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         } else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @GetMapping("/check")
     public UserDto checkDataLogin(@RequestParam String userName, @RequestParam String password){
         return userService.loginCheck(userName,password);
