@@ -22,6 +22,40 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    public List<User> getAll() {
+      return userRepository.findAll();
+    }
+
+    @Override
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public User updateUser(Long id, User user) {
+        User oldUser = userRepository.findById(id).orElse(null);
+        if (oldUser != null){
+            oldUser.setUserName(user.getUserName());
+            oldUser.setPassword(user.getPassword());
+            oldUser.setEmail(user.getEmail());
+            return userRepository.save(oldUser);
+        }
+        return null;
+
+    }
+
+    @Override
+    public void deleteUser_file(long id) {
+        userRepository.deleteById(id);
+
+    }
+
+    @Override
     public UserDto loginCheck(String userName, String password) {
         User user = userRepository.findByUsernameAndPassword(userName,password);
 
