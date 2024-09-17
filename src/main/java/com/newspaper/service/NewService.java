@@ -2,17 +2,20 @@ package com.newspaper.service;
 
 import com.newspaper.dto.NewDto;
 import com.newspaper.entity.New;
+import com.newspaper.entity.User;
 
 import java.util.List;
 
 public interface NewService {
 
-    public List<NewDto> getAllNew();
+    public List<New> getAll();
 
-    public NewDto getNewById(Long id);
+    public New saveNew(New news);
 
-    public void deleteById(Long id);
+    public New getNewById(Long id);
 
+    public New updateNew(Long id, New news);
 
-    public NewDto getNewMostRecent();
+    public void deleteNew(long id);
+
 }

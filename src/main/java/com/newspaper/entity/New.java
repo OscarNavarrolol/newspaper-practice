@@ -13,42 +13,43 @@ public class New {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 5, max = 100)
-    @NotNull(message = "not null title")
+    //@Size(min = 5, max = 100)
+    //@NotNull(message = "not null title")
     private String title;
 
-    @Min(value = 5, message = "more long for message")
-    @NotBlank(message = "not null content")
+    //@Min(value = 5, message = "more long for message")
+    //@NotBlank(message = "not null content")
     private String content;
 
-    @PastOrPresent
-    @NotNull(message = "not blank publication date")
+    //@PastOrPresent
+    //@NotNull(message = "not blank publication date")
     @Column(name = "publication_date")
     private LocalDate publicationDate;
 
-    @NotNull(message = "not null userId")
+   /* @NotNull(message = "not null userId")
     @Column(name = "user_id")
     private Long userId;
 
     @NotNull(message = "not null category")
     @Column(name = "category_id")
-    private Long categoryId;
+    private Long categoryId;*/
 
-    public @NotNull(message = "not null category") Long getCategoryId() {
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    /*public @NotNull(message = "not null category") Long setCategory() {
         return categoryId;
     }
 
     public void setCategoryId(@NotNull(message = "not null category") Long categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public @Min(value = 5, message = "more long for message") @NotBlank(message = "not null content") String getContent() {
-        return content;
-    }
-
-    public void setContent(@Min(value = 5, message = "more long for message") @NotBlank(message = "not null content") String content) {
-        this.content = content;
-    }
+    }*/
 
     public Long getId() {
         return id;
@@ -58,27 +59,43 @@ public class New {
         this.id = id;
     }
 
-    public @PastOrPresent @NotNull(message = "not blank publication date") LocalDate getPublicationDate() {
-        return publicationDate;
-    }
-
-    public void setPublicationDate(@PastOrPresent @NotNull(message = "not blank publication date") LocalDate publicationDate) {
-        this.publicationDate = publicationDate;
-    }
-
-    public @Size(min = 5, max = 100) @NotNull(message = "not null title") String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(@Size(min = 5, max = 100) @NotNull(message = "not null title") String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public @NotNull(message = "not null userId") Long getUserId() {
-        return userId;
+    public String getContent() {
+        return content;
     }
 
-    public void setUserId(@NotNull(message = "not null userId") Long userId) {
-        this.userId = userId;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public LocalDate getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(LocalDate publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

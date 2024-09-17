@@ -25,7 +25,7 @@ public class UserRestController {
         return userService.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get_user/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long id){
         User user = userService.getUserById(id);
         if( user != null){
@@ -34,13 +34,13 @@ public class UserRestController {
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PostMapping("/create")
+    @PostMapping("/create_user")
     public ResponseEntity<User> createUser(@RequestBody User user){
         User createdUser = userService.saveUser(user);
         return  new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update_user/{id}")
     public ResponseEntity<User> updateUser(@PathVariable(name = "id") Long id, @RequestBody User user){
         User updatedUser = userService.updateUser(id, user);
         if (updatedUser != null){
@@ -48,6 +48,11 @@ public class UserRestController {
         } else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @DeleteMapping("/delete_user/{id}")
+    public  ResponseEntity<User> deleteUser(@PathVariable("id") Long id){
+        userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/check")

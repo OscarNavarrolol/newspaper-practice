@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -26,6 +28,9 @@ public class User {
     @Email(message = "not bad email")
     private String email;
 
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<New> news;
+
     public @NotBlank(message = "not null email") @Email(message = "not bad email") String getEmail() {
         return email;
     }
@@ -33,6 +38,7 @@ public class User {
     public void setEmail(@NotBlank(message = "not null email") @Email(message = "not bad email") String email) {
         this.email = email;
     }
+
 
     public Long getId() {
         return id;
