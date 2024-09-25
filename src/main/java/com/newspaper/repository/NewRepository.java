@@ -4,7 +4,10 @@ import com.newspaper.entity.New;
 import com.newspaper.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface NewRepository extends JpaRepository<New,Long> {
@@ -15,7 +18,12 @@ public interface NewRepository extends JpaRepository<New,Long> {
             "    (SELECT publication_date, MAX(id) AS latest_id " +
             "    FROM news " +
             "    GROUP BY publication_date )" +
-            "   ORDER BY publication_date desc limit 1 ;")
-    New findRecentNew();
+            "   ORDER BY publication_date;")
+    List<New> findRecentNew();
 
+    @Query(nativeQuery = true, value = "select ne.id, ne.title, ne.content, ne.publication_date, ne.user_id, ca.name_category " +
+            "from news as ne , category as ca " +
+            "where ne.category_id = ca.id " +
+            "and ca.id = :categoryId")
+    List<Object[]> getNewsByCategory(Long categoryId);
 }

@@ -55,6 +55,18 @@ public class NewRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/category_new/{id_category}")
+    public ResponseEntity<List<Object[]>> getNewsByCategory(@PathVariable("id_category") Long categoryId) {
+        List<Object[]> newsList = newService.getNewByCategory(categoryId);
+        return new ResponseEntity<>(newsList, HttpStatus.OK);
+    }
+
+    @GetMapping("/recent_new")
+    public ResponseEntity<List<New>> getRecentNew(){
+        List<New> mostRecentNews = newService.getMostRecentNews();
+        return new ResponseEntity<>(mostRecentNews, HttpStatus.OK);
+    }
+    
    /* @GetMapping("/get_new")
     public List<NewDto> getAllUser(){
         return newService.getAllNew();

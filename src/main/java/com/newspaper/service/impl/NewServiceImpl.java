@@ -83,4 +83,14 @@ public class NewServiceImpl implements NewService {
         newRepository.deleteById(id);
 
     }
+
+    @Override
+    public List<Object[]> getNewByCategory(Long categoryId) {
+        return newRepository.getNewsByCategory(categoryId);
+    }
+
+    @Override
+    public List<New> getMostRecentNews() {
+        return newRepository.findRecentNew();
+    }
 }

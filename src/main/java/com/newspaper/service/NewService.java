@@ -18,4 +18,7 @@ public interface NewService {
 
     public void deleteNew(long id);
 
+    public List<Object[]> getNewByCategory(Long categoryId);
+
+    public List<New> getMostRecentNews();
 }
