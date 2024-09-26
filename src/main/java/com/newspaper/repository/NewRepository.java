@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface NewRepository extends JpaRepository<New,Long> {
@@ -26,4 +27,9 @@ public interface NewRepository extends JpaRepository<New,Long> {
             "where ne.category_id = ca.id " +
             "and ca.id = :categoryId")
     List<Object[]> getNewsByCategory(Long categoryId);
+
+    // chamba si hay
+    @Query(nativeQuery = true, value = "select * from news " +
+            "where title = :title")
+    Optional<List<New>> findByTitle(String title);
 }

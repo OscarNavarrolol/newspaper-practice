@@ -1,6 +1,6 @@
 package com.newspaper.api;
 
-import com.newspaper.dto.NewDto;
+
 import com.newspaper.entity.New;
 import com.newspaper.entity.User;
 import com.newspaper.service.NewService;
@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
@@ -66,7 +67,15 @@ public class NewRestController {
         List<New> mostRecentNews = newService.getMostRecentNews();
         return new ResponseEntity<>(mostRecentNews, HttpStatus.OK);
     }
-    
+
+    // retorna muchos datos pero funcional
+    @GetMapping("/search")
+    public ResponseEntity<List<New>> getByTitle(@RequestParam("title") String title) {
+        Optional<List<New>> foundNew = newService.getByTitle(title);
+        return foundNew
+                .map(news -> new ResponseEntity<>(news, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
    /* @GetMapping("/get_new")
     public List<NewDto> getAllUser(){
         return newService.getAllNew();

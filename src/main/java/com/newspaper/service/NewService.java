@@ -1,10 +1,11 @@
 package com.newspaper.service;
 
-import com.newspaper.dto.NewDto;
+
 import com.newspaper.entity.New;
 import com.newspaper.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface NewService {
 
@@ -21,4 +22,6 @@ public interface NewService {
     public List<Object[]> getNewByCategory(Long categoryId);
 
     public List<New> getMostRecentNews();
+
+    public Optional<List<New>> getByTitle(String title);
 }

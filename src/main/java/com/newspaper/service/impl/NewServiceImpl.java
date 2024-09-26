@@ -1,6 +1,5 @@
 package com.newspaper.service.impl;
 
-import com.newspaper.dto.NewDto;
 import com.newspaper.entity.Category;
 import com.newspaper.entity.New;
 import com.newspaper.entity.User;
@@ -92,5 +91,10 @@ public class NewServiceImpl implements NewService {
     @Override
     public List<New> getMostRecentNews() {
         return newRepository.findRecentNew();
+    }
+
+    @Override
+    public Optional<List<New>> getByTitle(String title) {
+        return newRepository.findByTitle(title);
     }
 }
