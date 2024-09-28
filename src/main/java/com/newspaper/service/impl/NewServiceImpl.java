@@ -8,6 +8,9 @@ import com.newspaper.repository.NewRepository;
 import com.newspaper.repository.UserRepository;
 import com.newspaper.service.NewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -89,8 +92,9 @@ public class NewServiceImpl implements NewService {
     }
 
     @Override
-    public List<New> getMostRecentNews() {
-        return newRepository.findRecentNew();
+    public Page<New> getMostRecentNews(int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return newRepository.findRecentNew(pageable);
     }
 
     @Override

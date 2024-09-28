@@ -1,5 +1,6 @@
 package com.newspaper.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -34,7 +35,7 @@ public class New {
     @Column(name = "category_id")
     private Long categoryId;*/
 
-
+    @JsonIgnore       // LA FORMULA
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

@@ -5,6 +5,7 @@ import com.newspaper.entity.New;
 import com.newspaper.entity.User;
 import com.newspaper.service.NewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -62,9 +63,11 @@ public class NewRestController {
         return new ResponseEntity<>(newsList, HttpStatus.OK);
     }
 
+    // pageNumber qué página obtener.
+    // pageSize cuántos mostrar.
     @GetMapping("/recent_new")
-    public ResponseEntity<List<New>> getRecentNew(){
-        List<New> mostRecentNews = newService.getMostRecentNews();
+    public ResponseEntity<Page<New>> getRecentNew(@RequestParam("page_number") int pageNumber, @RequestParam("page_size") int pageSize){
+        Page<New> mostRecentNews = newService.getMostRecentNews(pageNumber,pageSize);
         return new ResponseEntity<>(mostRecentNews, HttpStatus.OK);
     }
 

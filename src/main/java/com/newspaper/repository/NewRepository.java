@@ -2,6 +2,8 @@ package com.newspaper.repository;
 
 import com.newspaper.entity.New;
 import com.newspaper.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,8 +21,8 @@ public interface NewRepository extends JpaRepository<New,Long> {
             "    (SELECT publication_date, MAX(id) AS latest_id " +
             "    FROM news " +
             "    GROUP BY publication_date )" +
-            "   ORDER BY publication_date;")
-    List<New> findRecentNew();
+            "ORDER BY publication_date DESC")
+    Page<New> findRecentNew(Pageable pageable);
 
     @Query(nativeQuery = true, value = "select ne.id, ne.title, ne.content, ne.publication_date, ne.user_id, ca.name_category " +
             "from news as ne , category as ca " +
