@@ -24,14 +24,16 @@ public interface NewRepository extends JpaRepository<New,Long> {
             "ORDER BY publication_date DESC")
     Page<New> findRecentNew(Pageable pageable);
 
-    @Query(nativeQuery = true, value = "select ne.id, ne.title, ne.content, ne.publication_date, ne.user_id, ca.name_category " +
+    @Query(nativeQuery = true, value = "select ne.*" +
             "from news as ne , category as ca " +
             "where ne.category_id = ca.id " +
             "and ca.id = :categoryId")
-    List<Object[]> getNewsByCategory(Long categoryId);
+    List<New> getNewsByCategory(Long categoryId);
 
     // chamba si hay
     @Query(nativeQuery = true, value = "select * from news " +
             "where title = :title")
     Optional<List<New>> findByTitle(String title);
+
+    Optional<List<New>> findByUserId(Long userId);
 }

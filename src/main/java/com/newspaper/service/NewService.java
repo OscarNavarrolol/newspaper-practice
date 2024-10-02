@@ -20,9 +20,11 @@ public interface NewService {
 
     public void deleteNew(long id);
 
-    public List<Object[]> getNewByCategory(Long categoryId);
+    public List<New> getNewByCategory(Long categoryId);
 
     public Page<New> getMostRecentNews(int pageNumber, int pageSize);
 
     public Optional<List<New>> getByTitle(String title);
+
+    public Optional<List<New>> findAllByUser(Long userId);
 }

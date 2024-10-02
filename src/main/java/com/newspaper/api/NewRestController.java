@@ -58,8 +58,8 @@ public class NewRestController {
     }
 
     @GetMapping("/category_new/{id_category}")
-    public ResponseEntity<List<Object[]>> getNewsByCategory(@PathVariable("id_category") Long categoryId) {
-        List<Object[]> newsList = newService.getNewByCategory(categoryId);
+    public ResponseEntity<List<New>> getNewsByCategory(@PathVariable("id_category") Long categoryId) {
+        List<New> newsList = newService.getNewByCategory(categoryId);
         return new ResponseEntity<>(newsList, HttpStatus.OK);
     }
 
@@ -76,6 +76,15 @@ public class NewRestController {
     public ResponseEntity<List<New>> getByTitle(@RequestParam("title") String title) {
         Optional<List<New>> foundNew = newService.getByTitle(title);
         return foundNew
+                .map(news -> new ResponseEntity<>(news, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    // fino, si no sirve juan no sabe.
+    @GetMapping("/list_news/{user_id}")
+    public ResponseEntity<List<New>> getNewsByUser(@PathVariable("user_id") Long userId) {
+        Optional<List<New>> newsFound = newService.findAllByUser(userId);
+        return newsFound
                 .map(news -> new ResponseEntity<>(news, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

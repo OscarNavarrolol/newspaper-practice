@@ -27,13 +27,6 @@ public class New {
     @Column(name = "publication_date")
     private LocalDate publicationDate;
 
-   /* @NotNull(message = "not null userId")
-    @Column(name = "user_id")
-    private Long userId;
-
-    @NotNull(message = "not null category")
-    @Column(name = "category_id")
-    private Long categoryId;*/
 
     @JsonIgnore       // LA FORMULA
     @ManyToOne

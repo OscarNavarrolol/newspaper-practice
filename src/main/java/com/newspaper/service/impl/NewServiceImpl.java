@@ -87,7 +87,7 @@ public class NewServiceImpl implements NewService {
     }
 
     @Override
-    public List<Object[]> getNewByCategory(Long categoryId) {
+    public List<New> getNewByCategory(Long categoryId) {
         return newRepository.getNewsByCategory(categoryId);
     }
 
@@ -100,5 +100,10 @@ public class NewServiceImpl implements NewService {
     @Override
     public Optional<List<New>> getByTitle(String title) {
         return newRepository.findByTitle(title);
+    }
+
+    @Override
+    public Optional<List<New>> findAllByUser(Long userId) {
+        return newRepository.findByUserId(userId);
     }
 }
