@@ -87,8 +87,9 @@ public class NewServiceImpl implements NewService {
     }
 
     @Override
-    public List<New> getNewByCategory(Long categoryId) {
-        return newRepository.getNewsByCategory(categoryId);
+    public Page<New> getNewByCategory( Long categoryId,int offset, int limit) {
+        Pageable pageable = PageRequest.of(offset - 1, limit);
+        return newRepository.getNewsByCategory(categoryId,pageable);
     }
 
     @Override

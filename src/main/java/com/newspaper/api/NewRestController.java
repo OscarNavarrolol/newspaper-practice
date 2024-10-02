@@ -57,9 +57,15 @@ public class NewRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    // TODO PROBAR
     @GetMapping("/category_new/{id_category}")
-    public ResponseEntity<List<New>> getNewsByCategory(@PathVariable("id_category") Long categoryId) {
-        List<New> newsList = newService.getNewByCategory(categoryId);
+    public ResponseEntity<Page<New>> getNewsByCategory(@PathVariable("id_category") Long categoryId,
+                                                       @RequestParam("offset") int offset,
+                                                       @RequestParam("limit") int limit) {
+        if (offset < 1) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); // Manejar offsets inválidos
+        }
+        Page<New> newsList = newService.getNewByCategory(categoryId, offset, limit);
         return new ResponseEntity<>(newsList, HttpStatus.OK);
     }
 
@@ -88,6 +94,7 @@ public class NewRestController {
                 .map(news -> new ResponseEntity<>(news, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
    /* @GetMapping("/get_new")
     public List<NewDto> getAllUser(){
         return newService.getAllNew();

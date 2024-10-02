@@ -20,7 +20,7 @@ public interface NewService {
 
     public void deleteNew(long id);
 
-    public List<New> getNewByCategory(Long categoryId);
+    public Page<New> getNewByCategory(Long categoryId,int offset, int limit);
 
     public Page<New> getMostRecentNews(int pageNumber, int pageSize);
 
