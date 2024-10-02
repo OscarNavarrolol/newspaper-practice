@@ -26,5 +26,5 @@ public interface NewService {
 
     public Optional<List<New>> getByTitle(String title);
 
-    public Optional<List<New>> findAllByUser(Long userId);
+    public Page<New> findAllByUser(Long userId, int offset, int limit);
 }

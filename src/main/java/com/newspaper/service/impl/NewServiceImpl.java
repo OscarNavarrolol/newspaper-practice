@@ -87,9 +87,9 @@ public class NewServiceImpl implements NewService {
     }
 
     @Override
-    public Page<New> getNewByCategory( Long categoryId,int offset, int limit) {
-        Pageable pageable = PageRequest.of(offset - 1, limit);
-        return newRepository.getNewsByCategory(categoryId,pageable);
+    public Page<New> getNewByCategory(Long categoryId, int offset, int limit) {
+        Pageable pageable = PageRequest.of(offset, limit);
+        return newRepository.getNewsByCategory(categoryId, pageable);
     }
 
     @Override
@@ -104,7 +104,8 @@ public class NewServiceImpl implements NewService {
     }
 
     @Override
-    public Optional<List<New>> findAllByUser(Long userId) {
-        return newRepository.findByUserId(userId);
+    public Page<New> findAllByUser(Long userId,int offset, int limit) {
+        Pageable pageable = PageRequest.of(offset, limit);
+        return newRepository.findByUserId(userId,pageable);
     }
 }

@@ -28,7 +28,7 @@ public class New {
     private LocalDate publicationDate;
 
 
-    @JsonIgnore       // LA FORMULA
+    //@JsonIgnore       // LA FORMULA, colocar en caso de fallo random con foranea (pregunta primero)
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

@@ -24,10 +24,10 @@ public interface NewRepository extends JpaRepository<New,Long> {
             "ORDER BY publication_date DESC")
     Page<New> findRecentNew(Pageable pageable);
 
-    @Query(nativeQuery = true, value = "select ne.* " +
-            "from news as ne, category as ca " +
-            "where ne.category_id = ca.id " +
-            "and ca.id = :categoryId " +
+    @Query(nativeQuery = true, value = "SELECT ne.* " +
+            "FROM news AS ne " +
+            "JOIN category ca ON ne.category_id = ca.id " +
+            "WHERE ca.id = :categoryId " +
             "ORDER BY ne.publication_date DESC")
     Page<New> getNewsByCategory(@Param("categoryId") Long categoryId, Pageable pageable);
 
@@ -36,5 +36,5 @@ public interface NewRepository extends JpaRepository<New,Long> {
             "where title = :title")
     Optional<List<New>> findByTitle(String title);
 
-    Optional<List<New>> findByUserId(Long userId);
+    Page<New> findByUserId(Long userId, Pageable pageable);
 }

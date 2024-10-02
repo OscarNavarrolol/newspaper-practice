@@ -57,14 +57,15 @@ public class NewRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // TODO PROBAR
+    // TODO LISTO http://localhost:8083/api_new/category_new/1?offset=0&limit=5 si no sirve preguntele a faiber
     @GetMapping("/category_new/{id_category}")
     public ResponseEntity<Page<New>> getNewsByCategory(@PathVariable("id_category") Long categoryId,
                                                        @RequestParam("offset") int offset,
                                                        @RequestParam("limit") int limit) {
-        if (offset < 1) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); // Manejar offsets inválidos
+        if (offset < 0 || limit <= 0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
         Page<New> newsList = newService.getNewByCategory(categoryId, offset, limit);
         return new ResponseEntity<>(newsList, HttpStatus.OK);
     }
@@ -88,11 +89,9 @@ public class NewRestController {
 
     // fino, si no sirve juan no sabe.
     @GetMapping("/list_news/{user_id}")
-    public ResponseEntity<List<New>> getNewsByUser(@PathVariable("user_id") Long userId) {
-        Optional<List<New>> newsFound = newService.findAllByUser(userId);
-        return newsFound
-                .map(news -> new ResponseEntity<>(news, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Page<New>> getNewsByUser(@PathVariable("user_id") Long userId,int offset, int limit) {
+        Page<New> newsFound = newService.findAllByUser(userId,offset,limit);
+        return new ResponseEntity<>(newsFound, HttpStatus.OK);
     }
 
    /* @GetMapping("/get_new")
