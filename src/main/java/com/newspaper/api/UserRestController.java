@@ -65,4 +65,10 @@ public class UserRestController {
         return userService.registerUser(user);
     }
 
+    @GetMapping("/top_users")
+    public ResponseEntity<List<User>> getTopUsers() {
+        List<User> topUsers = userService.getTopUsersWithMostNews();
+        return new ResponseEntity<>(topUsers, HttpStatus.OK);
+    }
+
 }

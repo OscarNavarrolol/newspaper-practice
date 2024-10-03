@@ -21,5 +21,5 @@ public interface UserService {
 
     User registerUser(User user);
 
-
+    public List<User> getTopUsersWithMostNews();
 }
