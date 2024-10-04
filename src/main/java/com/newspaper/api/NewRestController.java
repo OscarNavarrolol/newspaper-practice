@@ -67,7 +67,12 @@ public class NewRestController {
         }
 
         Page<New> newsList = newService.getNewByCategory(categoryId, offset, limit);
-        return new ResponseEntity<>(newsList, HttpStatus.OK);
+        // pa recontrarevisar que sirva
+        if (newsList.hasContent()) {
+            return new ResponseEntity<>(newsList, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
 
     // pageNumber qué página obtener.

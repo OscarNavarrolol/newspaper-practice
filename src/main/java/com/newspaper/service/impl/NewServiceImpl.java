@@ -85,7 +85,7 @@ public class NewServiceImpl implements NewService {
         newRepository.deleteById(id);
 
     }
-
+        // aaa
     @Override
     public Page<New> getNewByCategory(Long categoryId, int offset, int limit) {
         Pageable pageable = PageRequest.of(offset, limit);
