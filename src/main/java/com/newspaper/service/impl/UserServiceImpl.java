@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getTopUsersWithMostNews() {
+    public List<Object[]> getTopUsersWithMostNews() {
         return userRepository.findTopUsers();
     }
 

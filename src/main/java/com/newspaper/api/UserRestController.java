@@ -66,8 +66,8 @@ public class UserRestController {
     }
 
     @GetMapping("/top_users")
-    public ResponseEntity<List<User>> getTopUsers() {
-        List<User> topUsers = userService.getTopUsersWithMostNews();
+    public ResponseEntity<List<Object[]>> getTopUsers() {
+        List<Object[]> topUsers = userService.getTopUsersWithMostNews();
         return new ResponseEntity<>(topUsers, HttpStatus.OK);
     }
 

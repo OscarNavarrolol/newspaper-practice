@@ -13,8 +13,10 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Query(nativeQuery = true,value = "SELECT * FROM users u WHERE u.username = :username AND u.password = :password")
     User findByUsernameAndPassword(String username, String password);
 
-    @Query(value = "SELECT u.* FROM users u " +
-            "JOIN (SELECT user_id, COUNT(*) as count FROM news GROUP BY user_id ORDER BY count DESC LIMIT 5) as ranked_users " +
-            "ON u.id = ranked_users.user_id", nativeQuery = true)
-    List<User> findTopUsers();
+    @Query(value = "SELECT u.username, COUNT(n.id) AS news_count " +
+            "FROM users AS u LEFT JOIN " +
+            "news n ON u.id = n.user_id " +
+            "GROUP BY u.username " +
+            "ORDER BY news_count DESC LIMIT 5;", nativeQuery = true)
+    List<Object[]> findTopUsers();
 }
