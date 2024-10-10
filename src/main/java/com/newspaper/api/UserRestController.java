@@ -56,7 +56,7 @@ public class UserRestController {
     }
 
     @GetMapping("/check")
-    public UserDto checkDataLogin(@RequestParam String userName, @RequestParam String password){
+    public User checkDataLogin(@RequestParam String userName, @RequestParam String password){
         return userService.loginCheck(userName,password);
     }
 

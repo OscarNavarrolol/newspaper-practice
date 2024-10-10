@@ -17,7 +17,7 @@ public interface UserService {
 
     public void deleteUser(long id);
 
-    UserDto loginCheck(String userName, String password);
+    User loginCheck(String userName, String password);
 
     User registerUser(User user);
 

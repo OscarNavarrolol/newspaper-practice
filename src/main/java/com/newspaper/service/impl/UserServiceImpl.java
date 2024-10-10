@@ -56,14 +56,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto loginCheck(String userName, String password) {
+    public User loginCheck(String userName, String password) {
         User user = userRepository.findByUsernameAndPassword(userName,password);
-
         if (user != null){
-            return new UserDto(user.getUserName(),user.getPassword(),user.getEmail());
-        }else {
+            return user;
+        } else {
             return null;
         }
+
     }
 
     @Override
