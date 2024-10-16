@@ -112,11 +112,5 @@ This project is licensed under the MIT License.
 ---
 
 ## 👨‍💻 Contribuitors
-Backend Developer: OscarNavarrolol
+Backend Developer: [OscarNavarrolol](https://github.com/OscarNavarrolol)
 Frontend Developer: [Sri-lanka](https://github.com/Sri-lanka)
-
----
-
-## 🌟 Acknowledgments
-
-Thanks to all contributors and open-source projects!
