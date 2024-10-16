@@ -1,4 +1,4 @@
-# 📰 Newspaper Management System
+# 📰 Newspaper practice System
 
 Welcome to the **Newspaper Management System**, a fully functional Spring Boot application designed to manage users, news articles, and categories. This project demonstrates the power of Spring Boot combined with RESTful APIs for creating a clean and intuitive content management system. 🚀
 
@@ -11,6 +11,12 @@ Welcome to the **Newspaper Management System**, a fully functional Spring Boot a
 - **Top Users**: Retrieve top users with the most published news articles.
 - **Cross-Origin Support**: Enabled CORS for easier front-end integration.
 
+---
+## 🎨 Frontend
+
+- **Aesthetic Elements**
+- We aimed for a clean and intuitive design, keeping the API responses simple yet effective. The UI, developed in React, brings this vision to life by providing a visually stunning interface for end-users. Check out the UI repository
+- <a>https://github.com/Sri-lanka/newspaper-practice-react</a>
 ---
 
 ## 🛠️ Technologies Used
@@ -30,28 +36,22 @@ Welcome to the **Newspaper Management System**, a fully functional Spring Boot a
 Before running the project, make sure you have the following installed:
 
 - **Java 17+**
-- **Maven 3.6+**
 
 ### Installation
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-repo/newspaper-management.git
-    cd newspaper-management
+    git clone https://github.com/OscarNavarrolol/newspaper-practice.git
+    cd newspaper-practice
     ```
 
-2. **Build the project**:
+2. **Run the application**:
     ```bash
-    mvn clean install
-    ```
-
-3. **Run the application**:
-    ```bash
-    mvn spring-boot:run
+    mvn spring-boot:run or start the server from the main class
     ```
 
 4. **Access the API**:
-    - The application will run at `http://localhost:8080`.
+    - The application will run at `http://localhost:8083`.
     - Check the available API endpoints below.
 
 ---
@@ -97,22 +97,11 @@ Before running the project, make sure you have the following installed:
 
 ---
 
-## 🎨 Screenshots
-
-**User Management**  
-![User API](https://example.com/user-api.png)
-
-**News Management**  
-![News API](https://example.com/news-api.png)
-
----
-
 ## 🧩 Future Improvements
 
 - **User Authentication**: Implement OAuth2 or JWT for secure authentication.
 - **Commenting System**: Allow users to comment on news articles.
 - **Role-Based Access**: Differentiate between admin and regular users.
-- **Front-End Integration**: Integrate with Angular or React for a full-stack solution.
 
 ---
 
@@ -122,13 +111,12 @@ This project is licensed under the MIT License.
 
 ---
 
-## 👨‍💻 Author
-
-Created with ❤️ by **Oscar Navarro**  
-Feel free to reach out at [oscar.nav@gmail.com](mailto:oscar.nav@gmail.com) or connect on [LinkedIn](https://linkedin.com/in/oscar-navarro).
+## 👨‍💻 Contribuitors
+Backend Developer: OscarNavarrolol
+Frontend Developer: [Sri-lanka](https://github.com/Sri-lanka)
 
 ---
 
 ## 🌟 Acknowledgments
 
-Thanks to all contributors and open-source projects that made this project possible!
+Thanks to all contributors and open-source projects!
