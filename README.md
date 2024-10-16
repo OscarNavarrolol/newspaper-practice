@@ -17,11 +17,8 @@ Welcome to the **Newspaper Management System**, a fully functional Spring Boot a
 
 - **Spring Boot** - The framework powering the backend of this application.
 - **Spring Data JPA** - For seamless interaction with the H2 in-memory database.
-- **Spring Security** - Ensures secure login and user management.
 - **RESTful API** - Exposes the CRUD operations via REST endpoints.
-- **H2 Database** - An in-memory database for quick development and testing.
-- **Lombok** - Reduces boilerplate code with annotations.
-- **Thymeleaf (optional)** - Front-end rendering engine for templates (if needed).
+- **Mysql** - A database simple.
 
 
 ---
